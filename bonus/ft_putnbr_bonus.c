@@ -1,19 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_putnbr_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/29 13:45:23 by igenial           #+#    #+#             */
-/*   Updated: 2023/06/29 14:29:59 by igenial          ###   ########.fr       */
+/*   Created: 2023/07/06 18:21:03 by igenial           #+#    #+#             */
+/*   Updated: 2023/07/10 22:18:35 by igenial          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "ft_printf.h"
 
-#include<stdarg.h>
-#include<unistd.h>
+int	ft_putnbr(long nb, char c)
+{
+	int	counter;
 
-#endif
+	counter = 0;
+	if (nb < 0)
+	{
+		nb *= -1;
+		counter += ft_putchar('-');
+	}
+	else 
+	{
+		if (c == '+')
+			counter += ft_putchar('+');
+		else if (c == ' ')
+			ounter += ft_putchar(' ');
+	}
+	if (nb / 10 > 0)
+		counter += ft_putnbr(nb / 10);
+	nb = nb % 10 + '0';
+	counter += ft_putchar(nb);
+	return (counter);
+}
