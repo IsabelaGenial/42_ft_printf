@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_flags.c                                         :+:      :+:    :+:   */
+/*   ft_putlong.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/10 19:51:50 by igenial           #+#    #+#             */
-/*   Updated: 2023/07/10 21:55:26 by igenial          ###   ########.fr       */
+/*   Created: 2023/07/06 18:21:03 by igenial           #+#    #+#             */
+/*   Updated: 2023/07/11 21:11:28 by igenial          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+ 
+#include "../mandatory/ft_printf.h"
+#include "../bonus/ft_printf_bonus.h"
 
-#include "ft_printf.h"
-
-int ft_flags(const char *print, va_list action_object)
+int	ft_putnbr(long nb)
 {
-	int counter; 
+	int	counter;
 
 	counter = 0;
-	print++;
-	if (*print == '#' && ((*print + 1) == 'x' ||(*print + 1) == 'X'))
+	if (nb < 0)
 	{
-		counter += ft_puthexa(va_arg(action_object, unsigned int), *print + 1);
+		nb *= -1;
+		counter += ft_putchar('-');
 	}
-	if ((*print == '+'|| *print == ' ') && ((*print + 1) == 'd' ||(*print + 1) == 'i'))
-	{
-		counter += ft_putnbr(va_arg(action_object, int), *print);
-	}
+	if (nb / 10 > 0)
+		counter += ft_putnbr(nb / 10);
+	nb = nb % 10 + '0';
+	counter += ft_putchar(nb);
 	return (counter);
 }

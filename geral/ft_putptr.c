@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/28 15:56:51 by igenial           #+#    #+#             */
-/*   Updated: 2023/07/06 17:46:39 by igenial          ###   ########.fr       */
+/*   Created: 2023/07/09 15:27:21 by igenial           #+#    #+#             */
+/*   Updated: 2023/07/11 21:12:11 by igenial          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../mandatory/ft_printf.h"
+#include "../bonus/ft_printf_bonus.h"
 
-int	ft_printf(const char *print, ...)
+int	ft_putptr(unsigned long nb)
 {
-	va_list	action_object;
-	int		counter;
+	int	counter;
 
 	counter = 0;
-	va_start(action_object, print);
-	while (*print)
-	{	
-		if (*print == '%')
-			counter += ft_type(print++, action_object);
-		else
-			counter += ft_putchar(*print);
-		print++;
-	}
-	va_end (action_object);
+	if (nb == 0)
+		return (write(1, "(nil)", 5));
+	counter += write(1, "0x", 2);
+	counter += ft_puthex(nb, 'x');
 	return (counter);
 }

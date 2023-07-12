@@ -6,11 +6,12 @@
 /*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 15:56:51 by igenial           #+#    #+#             */
-/*   Updated: 2023/07/06 17:46:39 by igenial          ###   ########.fr       */
+/*   Updated: 2023/07/11 21:10:20 by igenial          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../mandatory/ft_printf.h"
+#include "../bonus/ft_printf_bonus.h"
 
 int	ft_printf(const char *print, ...)
 {

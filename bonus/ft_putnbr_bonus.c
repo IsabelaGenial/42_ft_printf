@@ -6,11 +6,11 @@
 /*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 18:21:03 by igenial           #+#    #+#             */
-/*   Updated: 2023/07/10 22:18:35 by igenial          ###   ########.fr       */
+/*   Updated: 2023/07/11 23:17:35 by igenial          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 int	ft_putnbr(long nb, char c)
 {
@@ -27,10 +27,10 @@ int	ft_putnbr(long nb, char c)
 		if (c == '+')
 			counter += ft_putchar('+');
 		else if (c == ' ')
-			ounter += ft_putchar(' ');
+			counter += ft_putchar(' ');
 	}
 	if (nb / 10 > 0)
-		counter += ft_putnbr(nb / 10);
+		counter += ft_putnbr(nb / 10, c);
 	nb = nb % 10 + '0';
 	counter += ft_putchar(nb);
 	return (counter);

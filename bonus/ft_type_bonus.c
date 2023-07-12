@@ -6,11 +6,11 @@
 /*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 17:36:56 by igenial           #+#    #+#             */
-/*   Updated: 2023/07/10 22:04:05 by igenial          ###   ########.fr       */
+/*   Updated: 2023/07/11 23:21:26 by igenial          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 int	ft_type(const char *print, va_list action_object)
 {
@@ -29,9 +29,9 @@ int	ft_type(const char *print, va_list action_object)
 	if (*print == 'p')
 		counter += ft_putptr(va_arg(action_object, unsigned long));
 	if (*print == 'd' || *print == 'i')
-		counter += ft_putnbr(va_arg(action_object, int));
+		counter += ft_putnbr(va_arg(action_object, int), *print);
 	if (*print == 'u')
-		counter += ft_putnbr(va_arg(action_object, unsigned int));
+		counter += ft_putnbr(va_arg(action_object, unsigned int), *print);
 	if (*print == 'x' || *print == 'X')
 		counter += ft_puthex(va_arg(action_object, unsigned int), *print);
 	return (counter);
