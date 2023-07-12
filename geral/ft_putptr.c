@@ -6,12 +6,15 @@
 /*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 15:27:21 by igenial           #+#    #+#             */
-/*   Updated: 2023/07/11 21:12:11 by igenial          ###   ########.fr       */
+/*   Updated: 2023/07/12 17:59:42 by igenial          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../mandatory/ft_printf.h"
 #include "../bonus/ft_printf_bonus.h"
+
+
+int ft_pointer(size_t nb, char x);
 
 int	ft_putptr(unsigned long nb)
 {
@@ -21,6 +24,19 @@ int	ft_putptr(unsigned long nb)
 	if (nb == 0)
 		return (write(1, "(nil)", 5));
 	counter += write(1, "0x", 2);
-	counter += ft_puthex(nb, 'x');
+	counter += ft_pointer(nb, 'x');
 	return (counter);
 }
+
+int ft_pointer(size_t nb, char x)
+{
+	int	counter;
+
+	counter = 0;
+	if (nb / 16 > 0)
+		counter += ft_pointer(nb / 16, x);
+	nb = nb % 16;
+	counter += ft_putchar("0123456789abcdef"[nb % 16]);
+	return(counter);
+}
+
