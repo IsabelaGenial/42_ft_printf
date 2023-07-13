@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 18:21:03 by igenial           #+#    #+#             */
-/*   Updated: 2023/07/11 23:17:35 by igenial          ###   ########.fr       */
+/*   Created: 2023/06/29 16:39:03 by igenial           #+#    #+#             */
+/*   Updated: 2023/07/13 14:44:10 by igenial          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 
-int	ft_putnbr(long nb, char c)
+int	ft_putchar(char c)
 {
 	int	counter;
 
 	counter = 0;
-	if (nb < 0)
-	{
-		nb *= -1;
-		counter += ft_putchar('-');
-	}
-	else 
-	{
-		if (c == '+')
-			counter += ft_putchar('+');
-		else if (c == ' ')
-			counter += ft_putchar(' ');
-	}
-	if (nb / 10 > 0)
-		counter += ft_putnbr(nb / 10, c);
-	nb = nb % 10 + '0';
-	counter += ft_putchar(nb);
+	write(1, &c, 1);
+	counter++;
 	return (counter);
 }

@@ -6,11 +6,11 @@
 /*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 18:49:05 by igenial           #+#    #+#             */
-/*   Updated: 2023/07/12 19:05:00 by igenial          ###   ########.fr       */
+/*   Updated: 2023/07/13 14:44:26 by igenial          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../mandatory/ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_puthex(unsigned int nb, char x)
 {

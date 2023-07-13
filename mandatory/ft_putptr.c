@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/09 18:49:05 by igenial           #+#    #+#             */
-/*   Updated: 2023/07/11 23:14:51 by igenial          ###   ########.fr       */
+/*   Created: 2023/07/09 15:27:21 by igenial           #+#    #+#             */
+/*   Updated: 2023/07/13 14:48:30 by igenial          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 
-int	ft_puthex(size_t nb, char x)
+int	ft_pointer(size_t nb, char x);
+
+int	ft_putptr(unsigned long nb)
 {
 	int	counter;
 
 	counter = 0;
-	if (nb != 0)
-	{
-		counter += ft_putchar('0');
-		if (x == 'x')
-			counter += ft_putchar('x');
-		else if (x == 'X')
-			counter += ft_putchar('X');
-	}
+	if (nb == 0)
+		return (write(1, "(nil)", 5));
+	counter += write(1, "0x", 2);
+	counter += ft_pointer(nb, 'x');
+	return (counter);
+}
+
+int	ft_pointer(size_t nb, char x)
+{
+	int	counter;
+
+	counter = 0;
 	if (nb / 16 > 0)
-		counter += ft_puthex(nb / 16, x);
+		counter += ft_pointer(nb / 16, x);
 	nb = nb % 16;
-	if (x == 'x')
-		counter += ft_putchar("0123456789abcdef"[nb % 16]);
-	else
-		counter += ft_putchar("0123456789ABCDEF"[nb % 16]);
+	counter += ft_putchar("0123456789abcdef"[nb % 16]);
 	return (counter);
 }

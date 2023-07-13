@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putlong.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igenial <igenial@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/28 15:56:51 by igenial           #+#    #+#             */
-/*   Updated: 2023/07/11 21:10:20 by igenial          ###   ########.fr       */
+/*   Created: 2023/07/06 18:21:03 by igenial           #+#    #+#             */
+/*   Updated: 2023/07/13 14:49:47 by igenial          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../mandatory/ft_printf.h"
-#include "../bonus/ft_printf_bonus.h"
+#include "ft_printf.h"
 
-int	ft_printf(const char *print, ...)
+int	ft_putlong(long nb)
 {
-	va_list	action_object;
-	int		counter;
+	int	counter;
 
 	counter = 0;
-	va_start(action_object, print);
-	while (*print)
-	{	
-		if (*print == '%')
-			counter += ft_type(print++, action_object);
-		else
-			counter += ft_putchar(*print);
-		print++;
+	if (nb < 0)
+	{
+		nb *= -1;
+		counter += ft_putchar('-');
 	}
-	va_end (action_object);
+	if (nb / 10 > 0)
+		counter += ft_putnbr(nb / 10);
+	nb = nb % 10 + '0';
+	counter += ft_putchar(nb);
 	return (counter);
 }
